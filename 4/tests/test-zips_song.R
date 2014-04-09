@@ -13,13 +13,11 @@ test_that("output contains the list of zips songs for 4 rows", {
     25 four
   "
 
-  output <- as.data.frame(read.table(header = FALSE, text = "
+  output <- as.data.frame(read.table(header = FALSE, col.names=c("name"), text = "
       four
       two
     "))
   
-  names(output) <- c("names")
-    
   expect_that(get_zips_songs_list(input), equals(output))
 })
 
@@ -46,7 +44,7 @@ input <- "
   "
 
 test_that("output contains the list of zips songs for 14 rows", {
-  output <- as.data.frame(read.table(header = FALSE, text = "
+  output <- as.data.frame(read.table(header = FALSE, col.names=c("name"), text = "
     19_2000
     clint_eastwood
     tomorrow_comes_today
@@ -64,7 +62,7 @@ test_that("can read the number of result list", {
 
 
 test_that("can read the input without first row", {
-  output <- as.data.frame(read.table(header = FALSE, text = "
+  output <- as.data.frame(read.table(header = FALSE, col.names=c("fi","name"), text = "
     197812 re_hash
     78906 5_4
     189518 tomorrow_comes_today 
