@@ -1,4 +1,3 @@
-library(plyr)
 library(dplyr)
 
 get_zips_songs_list <- function (input) {
@@ -7,7 +6,9 @@ get_zips_songs_list <- function (input) {
   
   data$i <- as.numeric(rownames(data))
   data$qi <- data$fi/(1/data$i)
-  head(arrange(data, desc(qi), i) %.% select(name),result_count)
+  toplist <- head(arrange(data, desc(qi), i) %>% select(name),result_count)
+  toplist$name <- factor(toplist$name)
+  toplist
 }
 
 
